@@ -1,0 +1,36 @@
+---
+import { albums } from "../../services/metallica-data";
+---
+
+<section
+  class="h-screen w-screen text-center relative overflow-hidden"
+  id="albums"
+>
+  <div class="flex flex-col">
+    <h2 class="text-gray-200 pt-32 text-5xl font-medium mb-4 rock-font">
+      Studio Albums
+    </h2>
+    <div class="relative z-30 flex flex-col w-screen h-screen">
+      <div class="text-center">
+        <ul class="grid grid-cols-4 gap-4 p-5 auto-cols-auto">
+          {
+            albums.map(({ title, year, cover }) => (
+              <li
+                class="rounded-sm relative h-32 transform transition-transform duration-500 ease-in-out hover:scale-110 bg-center"
+                style={{ backgroundImage: `url(${cover})` }}
+              >
+                <div class="rounded-sm z-30">
+                  <button class="bg-gray-700/35 text-white absolute top-0 left-0 w-full h-full">
+                    <h4 class=" absolute p-1 w-full top-0 bg-gray-700/70">
+                      {title} <span class="italic">({year})</span>
+                    </h4>
+                  </button>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

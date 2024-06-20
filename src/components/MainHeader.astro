@@ -1,0 +1,27 @@
+---
+// import MetallicaLogo from "../../public/images/metallica-logo.png";
+// const metallicaLogo = MetallicaLogo.src;
+import LogoMetallica from "./LogoMetallica.astro";
+---
+
+<header
+  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white bg-gray-700/35"
+>
+  <div class="flex flex-grow justify-start basis-0">
+    <!-- <a href=""><img class="w-[150px]" src={metallicaLogo} alt="Metallica" /></a> -->
+    <LogoMetallica />
+  </div>
+  <nav>
+    <ul
+      class="flex text-sm gap-5 [&>li>a]:px-2 [&>li>a]:p-4 [&>li>a]:rounded-md hover:[&>li>a]:bg-gray-700 ease-in-out"
+    >
+      <li><a href="#about">About</a></li>
+      <li><a href="#albums">Albums</a></li>
+      <li><a href="#concerts">Concerts</a></li>
+    </ul>
+  </nav>
+
+  <div class="flex flex-grow justify-end basis-0 rock-font">
+    <a href="https://www.metallica.com/" target="_blank">Official Site</a>
+  </div>
+</header>

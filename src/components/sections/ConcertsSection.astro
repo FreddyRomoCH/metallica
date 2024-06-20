@@ -1,0 +1,75 @@
+---
+import Location from "../icons/Location.astro";
+import { fetchLastTwoConcerts } from "../../services/metallica-data";
+const lastTwoConcerts = await fetchLastTwoConcerts();
+---
+
+<section
+  class="h-screen w-screen text-center relative overflow-hidden"
+  id="concerts"
+>
+  <div class="flex flex-col">
+    <h2 class="text-gray-200 pt-32 text-5xl font-medium mb-6 rock-font">
+      Lastest Concerts
+    </h2>
+    <div class="text-white">
+      <ul class="flex text-center justify-center gap-16 px-8">
+        {
+          lastTwoConcerts.map(
+            (concert: {
+              id: string;
+              venue: {
+                name: string;
+                city: {
+                  name: string;
+                };
+              };
+              sets: {
+                set: {
+                  song: {
+                    name: string;
+                  }[];
+                }[];
+              };
+              name: string;
+              eventDate: string;
+            }) => (
+              <li id={concert.id}>
+                <div class="flex justify-between mb-6">
+                  <div>
+                    <Location />
+                  </div>
+                  <p class=" text-lg">
+                    {/* Location Concert */}
+                    {concert.venue.name}, {concert.venue.city.name}
+                  </p>
+                  {/* Date Concert */}
+                  <h3 class="text-amber-200 text-[12px] italic">
+                    {concert.eventDate}
+                  </h3>
+                </div>
+                <ul>
+                  {concert.sets.set.map(
+                    (set: {
+                      song: {
+                        name: string;
+                      }[];
+                    }) => (
+                      <li>
+                        <ul>
+                          {set.song.map((song: { name: string }) => (
+                            <li class=" mb-1 text-sm">{song.name}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </li>
+            )
+          )
+        }
+      </ul>
+    </div>
+  </div>
+</section>
