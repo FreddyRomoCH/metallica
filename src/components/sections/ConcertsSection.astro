@@ -44,11 +44,16 @@ const lastTwoConcerts = await fetchLastTwoConcerts();
                     {concert.venue.name}, {concert.venue.city.name}
                   </p>
                   {/* Date Concert */}
-                  <h3 class="text-amber-200 text-[12px] italic">
+                  <h3 class="text-amber-200 text-[12px] italic ml-3">
                     {concert.eventDate}
                   </h3>
                 </div>
                 <ul>
+                  {concert.sets.set.length === 0 ? (
+                    <p>No songs added yet.</p>
+                  ) : (
+                    ""
+                  )}
                   {concert.sets.set.map(
                     (set: {
                       song: {
@@ -58,7 +63,7 @@ const lastTwoConcerts = await fetchLastTwoConcerts();
                       <li>
                         <ul>
                           {set.song.map((song: { name: string }) => (
-                            <li class=" mb-1 text-sm">{song.name}</li>
+                            <li class="mb-1 text-sm">{song.name}</li>
                           ))}
                         </ul>
                       </li>
