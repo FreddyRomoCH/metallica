@@ -1,18 +1,22 @@
 ---
 import { albums } from "../../services/metallica-data";
+//Props
+const { title = "Albums" } = Astro.props;
 ---
 
 <section
   class="h-screen w-screen text-center relative overflow-hidden"
-  id="albums"
+  id={title.toLowerCase()}
+  title={title}
 >
   <div class="flex flex-col w-screen h-screen">
     <div>
       <h2 class="text-gray-200 pt-32 text-2xl font-medium mb-4 rock-font">
-        Studio Albums
+        {title}
       </h2>
     </div>
-    <div class="relative my-0 mx-auto h-[70vh]">
+    <div class="relative my-0 mx-auto">
+      <!-- h-[70vh -->
       <ul
         class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] w-screen max-w-[80%] gap-4 items-center justify-items-center p-4 box-border my-0 mx-auto overflow-auto max-h-[100%]"
       >
@@ -33,6 +37,9 @@ import { albums } from "../../services/metallica-data";
           ))
         }
       </ul>
+    </div>
+    <div class="text-gray-200 pt-4 text-sm font-normal">
+      <a href="/albums">See more</a>
     </div>
   </div>
 </section>

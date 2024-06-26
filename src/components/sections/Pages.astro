@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MainHeader from "../MainHeader.astro";
+
+const { title, subtitle } = Astro.props;
+---
+
+<Layout title={title}>
+  <MainHeader />
+  <main>
+    <header class="relative w-screen text-center mt-36 mb-16 px-36">
+      <h2 class="text-white text-5xl font-medium rock-font my-5 mb-14">
+        {title}
+      </h2>
+      <p class="text-white text-base">{subtitle}</p>
+    </header>
+
+    <section class="relative text-white text-center">
+      <!-- Albums Page Slot -->
+      <slot name="albums" />
+      <!-- Another Page Slot -->
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,35 @@
+---
+import { albums } from "../services/metallica-data";
+import Pages from "../components/sections/Pages.astro";
+---
+
+<Pages
+  title="Albums"
+  subtitle="The discography of American heavy metal band Metallica includes 11 studio albums, eight live albums, three extended plays, 49 singles, 10 video albums, 43 music videos, one soundtrack album, one collaboration album and three box sets."
+>
+  <div class="flex justify-center flex-col" slot="albums">
+    {
+      albums.map(({ title, year, cover }, index) => (
+        <div class="flex justify-center flex-wrap flex-row">
+          {index % 2 === 0 ? (
+            <div>
+              <h2>{title}</h2>
+              <p>{year}</p>
+            </div>
+            <div>
+              <img src={cover} alt={title} />
+            </div>
+          ) : (
+            <div>
+              <img src={cover} alt={title} />
+            </div>
+            <div>
+              <h2>{title}</h2>
+              <p>{year}</p>
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</Pages>
