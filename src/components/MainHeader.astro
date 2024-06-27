@@ -5,7 +5,7 @@ import LogoMetallica from "./LogoMetallica.astro";
 ---
 
 <header
-  class="fixed py-3 px-10 flex items-center top-0 w-full justify-between z-40 text-white bg-gray-700/35 box-border"
+  class="main-header fixed py-3 px-10 flex items-center top-0 w-full justify-between z-40 text-white bg-gray-700 box-border"
 >
   <div class="flex flex-grow justify-start basis-0">
     <!-- <a href=""><img class="w-[150px]" src={metallicaLogo} alt="Metallica" /></a> -->
@@ -25,3 +25,23 @@ import LogoMetallica from "./LogoMetallica.astro";
     <a href="https://www.metallica.com/" target="_blank">Official Site</a>
   </div>
 </header>
+
+<style>
+  .main-header {
+    animation: changeOpacity linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0% 80px;
+    opacity: 0.35;
+  }
+
+  @keyframes changeOpacity {
+    from {
+      opacity: 0.35;
+    }
+    to {
+      opacity: 0.8;
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+    }
+  }
+</style>

@@ -4,7 +4,7 @@ export const albums = [
       title: "Kill 'Em All",
       year: 1983,
       cover: "public/images/kill-em-all.jpg",
-      description: "Kill 'Em All is the debut studio album by American heavy metal band Metallica, released on July 25, 1983, through the independent label Megaforce Records. Metallica began by playing shows in local clubs in Los Angeles. They recorded several demos to gain attention from club owners and eventually relocated to San Francisco to secure the services of bassist Cliff Burton. The group's No Life 'til Leather demo tape (1982) was noticed by Megaforce label head Jon Zazula, who signed them and provided a budget of $15,000 for recording. The album was recorded in May with producer Paul Curcio at the Music America Studios in Rochester, New York. It was originally intended to be titled",
+      description: "Kill 'Em All is the debut studio album by American heavy metal band Metallica, released on July 25, 1983, through the independent label Megaforce Records. Metallica began by playing shows in local clubs in Los Angeles. They recorded several demos to gain attention from club owners and eventually relocated to San Francisco to secure the services of bassist Cliff Burton.",
       songs: [
         {
           id: 1,
@@ -63,7 +63,7 @@ export const albums = [
       title: "Ride the Lightning",
       year: 1984,
       cover: "public/images/ride-the-lightning.png",
-      description: "Ride the Lightning is the second studio album by American heavy metal band Metallica, released on July 27, 1984, by the independent record label Megaforce Records. The album was recorded in three weeks with producer Flemming Rasmussen at the Sweet Silence Studios in Copenhagen, Denmark. The artwork, based on a concept by the band, depicts an electric chair being struck by lightning flowing from the band logo. The title was taken from a passage in Stephen King's novel The Stand. Although rooted in the thrash metal genre, the album showcased the band's musical growth and lyrical sophistication. This was partly because bassist Cliff Burton introduced the basics of music theory to the rest of the band and had more input in the songwriting.",
+      description: "Ride the Lightning is the second studio album by American heavy metal band Metallica, released on July 27, 1984, by the independent record label Megaforce Records. The album was recorded in three weeks with producer Flemming Rasmussen at the Sweet Silence Studios in Copenhagen, Denmark. The artwork, based on a concept by the band, depicts an electric chair being struck by lightning flowing from the band logo.",
       songs: [
         {
           id: 1,
@@ -112,7 +112,7 @@ export const albums = [
       title: "Master of Puppets",
       year: 1986,
       cover: "public/images/master-of-puppets.jpg",
-      description: "Master of Puppets is the third studio album by American heavy metal band Metallica, released on March 3, 1986, by Elektra Records. Recorded in Denmark at Sweet Silence Studios with producer Flemming Rasmussen, it was the band's last album to feature bassist Cliff Burton, who died in a bus accident in Sweden during the album's promotional tour. The album's artwork, designed by Metallica and Peter Mensch and painted by Don Brautigam, depicts a cemetery of white crosses tethered to strings, manipulated by a pair of hands in a blood-red sky. The album was the band's first to be certified gold on November 4, 1986, and was certified six times platinum by 2003. It was also the first thrash metal album to be certified platinum.",
+      description: "Master of Puppets is the third studio album by American heavy metal band Metallica, released on March 3, 1986, by Elektra Records. Recorded in Denmark at Sweet Silence Studios with producer Flemming Rasmussen, it was the band's last album to feature bassist Cliff Burton, who died in a bus accident in Sweden during the album's promotional tour. The album's artwork, designed by Metallica and Peter Mensch and painted by Don Brautigam, depicts a cemetery of white crosses tethered to strings, manipulated by a pair of hands in a blood-red sky.",
       songs: [
         {
           id: 1,
@@ -161,7 +161,7 @@ export const albums = [
       title: "...And Justice for All",
       year: 1988,
       cover: "public/images/and-justice-for-all.jpg",
-      description: "...And Justice for All is the fourth studio album by American heavy metal band Metallica, released on August 25, 1988, through Elektra Records. It is the first Metallica studio album to feature bassist Jason Newsted after the death of Cliff Burton in 1986. ...And Justice for All was recorded in early 1988 at One on One Recording Studios in Los Angeles. It features long and complex songs, fast tempos, and few verse-chorus structures. The album is noted for its sterile production, which producer Flemming Rasmussen attributed to his absence during the mixing process. The lyrics feature themes of political and legal injustice seen through the prisms of censorship, war, and nuclear brinkmanship.",
+      description: "...And Justice for All is the fourth studio album by American heavy metal band Metallica, released on August 25, 1988, through Elektra Records. It is the first Metallica studio album to feature bassist Jason Newsted after the death of Cliff Burton in 1986. ...And Justice for All was recorded in early 1988 at One on One Recording Studios in Los Angeles. It features long and complex songs, fast tempos, and few verse-chorus structures.",
       songs: [
         {
           id: 1,
@@ -216,7 +216,7 @@ export const albums = [
       title: "Metallica",
       year: 1991,
       cover: "public/images/black-album.jpg",
-      description: "Metallica is the fifth studio album by American heavy metal band Metallica, released on August 12, 1991, through Elektra Records. It was recorded in an eight-month span at One on One Recording Studios in Los Angeles. The recording of the album was troubled, however, and, during production, the band frequently came into conflict with their new producer Bob Rock. The album marked a change in the band's sound from the thrash metal style of the previous four albums to a slower, heavier, and more refined sound. Metallica promoted the album with a series of tours. They also released five singles to promote the album: \"Enter Sandman\", \"The Unforgiven\", \"Nothing Else Matters\", \"Wherever I May Roam\", and \"Sad but True\", all of which have been considered to be among the band's best-known songs.",
+      description: "Metallica is the fifth studio album by American heavy metal band Metallica, released on August 12, 1991, through Elektra Records. It was recorded in an eight-month span at One on One Recording Studios in Los Angeles. The recording of the album was troubled, however, and, during production, the band frequently came into conflict with their new producer Bob Rock. The album marked a change in the band's sound from the thrash metal style of the previous four albums to a slower, heavier, and more refined sound.",
       songs: [
         {
           id: 1,
@@ -438,7 +438,7 @@ export const albums = [
       title: "St. Anger",
       year: 2003,
       cover: "public/images/st-anger.jpg",
-      description: "St. Anger is the eighth studio album by American heavy metal band Metallica, released on June 5, 2003. It was the last Metallica album released through Elektra Records and the final collaboration between Metallica and longtime producer Bob Rock, with whom the band had worked since 1990. This is the band's only album not to feature an official bass player, as Jason Newsted left Metallica prior to the recording sessions; Rock played the album's bass parts in his place. Metallica's recording process for the album was long and difficult, and included a great deal of tension between band members. The album's creation was chronicled for the film Some Kind of Monster.",
+      description: "St. Anger is the eighth studio album by American heavy metal band Metallica, released on June 5, 2003. It was the last Metallica album released through Elektra Records and the final collaboration between Metallica and longtime producer Bob Rock, with whom the band had worked since 1990. This is the band's only album not to feature an official bass player, as Jason Newsted left Metallica prior to the recording sessions; Rock played the album's bass parts in his place.",
       songs: [
         {
           id: 1,
@@ -502,7 +502,7 @@ export const albums = [
       title: "Death Magnetic",
       year: 2008,
       cover: "public/images/death-magnetic.jpg",
-      description: "Death Magnetic is the ninth studio album by American heavy metal band Metallica, released on September 12, 2008, through Warner Bros. Records. The album was produced by Rick Rubin, marking the band's first album since ...And Justice for All (1988) not to be produced by Bob Rock. It is also the first Metallica album to feature bassist Robert Trujillo, and the second to share writing credit to all of the band's members. The album received mostly positive reviews upon release, with critics describing it as a return to the musical style of their early albums. Death Magnetic is the band's first album to be produced by Rick Rubin, making it the first Metallica album since 1988's ...And Justice for All not to be produced by Bob Rock.",
+      description: "Death Magnetic is the ninth studio album by American heavy metal band Metallica, released on September 12, 2008, through Warner Bros. Records. The album was produced by Rick Rubin, marking the band's first album since ...And Justice for All (1988) not to be produced by Bob Rock. It is also the first Metallica album to feature bassist Robert Trujillo, and the second to share writing credit to all of the band's members. The album received mostly positive reviews upon release, with critics describing it as a return to the musical style of their early albums.",
       songs: [
         {
           id: 1,

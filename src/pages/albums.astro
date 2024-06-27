@@ -9,27 +9,159 @@ import Pages from "../components/sections/Pages.astro";
 >
   <div class="flex justify-center flex-col" slot="albums">
     {
-      albums.map(({ title, year, cover }, index) => (
-        <div class="flex justify-center flex-wrap flex-row">
-          {index % 2 === 0 ? (
-            <div>
-              <h2>{title}</h2>
-              <p>{year}</p>
-            </div>
-            <div>
-              <img src={cover} alt={title} />
-            </div>
-          ) : (
-            <div>
-              <img src={cover} alt={title} />
-            </div>
-            <div>
-              <h2>{title}</h2>
-              <p>{year}</p>
-            </div>
-          )}
-        </div>
-      ))
+      albums.map(({ title, year, cover, description, songs }, index) => {
+        const bgColor =
+          index % 2 === 0
+            ? "bg-gray-700 text-gray-200"
+            : "bg-gray-200 text-gray-700";
+        return (
+          <div
+            class={`album-content ${bgColor} relative flex items-center justify-center flex-wrap flex-row w-full min-h-[26rem]`}
+          >
+            {index % 2 === 0 ? (
+              <>
+                <div class="relative flex flex-col items-center flex-[2] p-8 bg-gray-700 text-gray-200">
+                  <div
+                    data-index={index}
+                    class={`songs absolute flex flex-col items-center justify-center left-0 top-0 w-0 h-full ${bgColor}`}
+                  >
+                    <div class="textSongs opacity-0 flex flex-col gap-1 items-center justify-center">
+                      {songs.map(({ id, title, length }) => {
+                        return (
+                          <div class="rock-font">
+                            <span>{id}. </span>
+                            <span>{title} </span>
+                            <span class="text-orange-300">{length}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <h2 class="text-xl mb-4 rock-font">
+                    {title} <span class="text-orange-300">{year}</span>
+                  </h2>
+                  <p class="mb-4">{description}</p>
+                </div>
+                <div class="relative flex-[1]">
+                  <div
+                    data-index={index}
+                    class="see-songs absolute flex flex-col justify-center w-full h-full bg-gray-700/70"
+                  >
+                    <h3 class="rock-font text-xl text-white">See Songs</h3>
+                  </div>
+                  <img class="w-full" src={cover} alt={title} />
+                </div>
+              </>
+            ) : (
+              <>
+                <div class="relative flex-[1]">
+                  <div
+                    data-index={index}
+                    class="see-songs absolute flex flex-col justify-center w-full h-full bg-gray-700/70"
+                  >
+                    <h3 class="rock-font text-xl text-white">See Songs</h3>
+                  </div>
+                  <img class="w-full" src={cover} alt={title} />
+                </div>
+                <div class="relative flex flex-col items-center flex-[2] p-8 bg-gray-200 text-gray-700">
+                  <div
+                    data-index={index}
+                    class={`songs absolute flex flex-col items-center justify-center left-0 top-0 w-0 h-full ${bgColor}`}
+                  >
+                    <div class="textSongs opacity-0 flex flex-col gap-1 items-center justify-center">
+                      {songs.map(({ id, title, length }) => {
+                        return (
+                          <div class="rock-font">
+                            <span>{id}. </span>
+                            <span>{title} </span>
+                            <span class="text-orange-300">{length}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <h2 class="text-xl mb-4 rock-font">
+                    {title} <span class="text-orange-300">{year}</span>
+                  </h2>
+                  <p class="mb-4">{description}</p>
+                </div>
+              </>
+            )}
+          </div>
+        );
+      })
     }
   </div>
 </Pages>
+
+<style>
+  .album-content {
+    animation: ReveilBox linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 40%;
+    opacity: 0;
+  }
+
+  @keyframes ReveilBox {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .songs {
+    width: 0;
+    opacity: 0;
+    transition:
+      width 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
+  }
+
+  .songs.active {
+    width: 100%;
+    opacity: 1;
+  }
+
+  .textSongs {
+    transition: opacity 0.7s ease-in-out 0.3s;
+    opacity: 0;
+  }
+
+  .textSongs.active {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // See Songs Transition
+  const seeSongs = document.querySelectorAll(".see-songs");
+  const songs = document.querySelectorAll(".songs");
+
+  seeSongs.forEach((seeSong) => {
+    seeSong.addEventListener("mouseover", (e) => {
+      const idAlbum = (e.target as HTMLElement).getAttribute("data-index");
+      songs.forEach((song) => {
+        const idAlbumSongs = song.getAttribute("data-index");
+        if (idAlbum === idAlbumSongs) {
+          song.classList.add("active");
+          song.querySelector(".textSongs")?.classList.add("active");
+        }
+      });
+    });
+    // MouseLeave
+    seeSong.addEventListener("mouseleave", (e) => {
+      const idAlbum = (e.target as HTMLElement).getAttribute("data-index");
+      songs.forEach((song) => {
+        const idAlbumSongs = song.getAttribute("data-index");
+        if (idAlbum === idAlbumSongs) {
+          song.querySelector(".textSongs")?.classList.remove("active");
+          song.classList.remove("active");
+        }
+      });
+    });
+  });
+</script>
