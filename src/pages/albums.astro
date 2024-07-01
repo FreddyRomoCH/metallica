@@ -125,15 +125,19 @@ import Pages from "../components/sections/Pages.astro";
   .songs.active {
     width: 100%;
     opacity: 1;
+    transition:
+      width 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
   }
 
   .textSongs {
-    transition: opacity 0.7s ease-in-out 0.3s;
     opacity: 0;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .textSongs.active {
     opacity: 1;
+    transition: opacity 0.3s ease-in-out 0.3s;
   }
 </style>
 
