@@ -1,4 +1,4 @@
-export const albums = [
+  export const albums = [
     {
       id: 1,
       title: "Kill 'Em All",
@@ -695,6 +695,50 @@ export const albums = [
       ]
     },
   ];
+
+  type BandMember = {
+    id: number;
+    name: string;
+    role: string;
+    born: string;
+    bio: string;
+    picture: string;
+  }
+
+  export const band: BandMember[] = [
+    {
+      id: 1,
+      name: "James Hetfield",
+      role: "Vocals, Rhythm Guitar",
+      born: "August 3, 1963",
+      bio: "James Alan Hetfield is an American musician and songwriter best known for being the co-founder, lead vocalist/rhythm guitarist and main songwriter for the American heavy metal band Metallica. Hetfield is mainly known for his intricate rhythm playing, but occasionally performs lead guitar duties and solos, both live and in the studio. Hetfield co-founded Metallica in October 1981 after answering an advertisement by drummer Lars Ulrich in the Los Angeles newspaper The Recycler.",
+      picture: "/images/members/james-hetfield.jpg"
+    },
+    {
+      id: 2,
+      name: "Lars Ulrich",
+      role: "Drums",
+      born: "December 26, 1963",
+      bio: "Lars Ulrich is a Danish musician, songwriter, and record producer. He is best known as the drummer and co-founder of the American heavy metal band Metallica. The son of tennis player Torben Ulrich and grandson of tennis player Einer Ulrich, he also played tennis in his youth and moved to Los Angeles at age 16 to train professionally. However, rather than playing tennis, Ulrich began playing drums. After publishing an advertisement in The Recycler, Ulrich met James Hetfield and formed Metallica.",
+      picture: "/images/members/lars-ulrich.jpg"
+    },
+    {
+      id: 3,
+      name: "Kirk Hammett",
+      role: "Lead Guitar",
+      born: "November 18, 1962",
+      bio: "Kirk Lee Hammett is an American musician who has been the lead guitarist and a contributing songwriter for heavy metal band Metallica since 1983. Before joining Metallica he formed and named the band Exodus. In 2003, Hammett was ranked 11th on Rolling Stone's list of The 100 Greatest Guitarists of All Time. In 2009, Hammett was ranked number 15 in Joel McIver's book The 100 Greatest Metal Guitarists.",
+      picture: "/images/members/kirk-hammett.jpg"
+    },
+    {
+      id: 4,
+      name: "Robert Trujillo",
+      role: "Bass",
+      born: "October 23, 1964",
+      bio: "Roberto Agustín Miguel Santiago Samuel Trujillo Veracruz is an American musician and songwriter. He has been the bassist of the American heavy metal band Metallica since 2003. He was also a member of crossover thrash band Suicidal Tendencies, funk metal supergroup Infectious Grooves, heavy metal band Black Label Society, and has worked with Jerry Cantrell and Ozzy Osbourne.",
+      picture: "/images/members/robert-trujillo.jpg"
+    }
+  ]
 
   const metallicaMBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
 
