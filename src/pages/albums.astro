@@ -9,13 +9,14 @@ import Pages from "../components/sections/Pages.astro";
 >
   <div class="flex justify-center flex-col" slot="albums">
     {
-      albums.map(({ title, year, cover, description, songs }, index) => {
+      albums.map(({ id, title, year, cover, description, songs }, index) => {
         const bgColor =
           index % 2 === 0
             ? "bg-gray-700 text-gray-200"
             : "bg-gray-200 text-gray-700";
         return (
           <div
+            id={id.toString()}
             class={`album-content ${bgColor} relative flex items-center justify-center flex-wrap flex-row w-full min-h-[26rem]`}
           >
             {index % 2 === 0 ? (

@@ -18,12 +18,12 @@ const { title = "Albums" } = Astro.props;
     <div class="relative my-0 mx-auto">
       <!-- h-[70vh -->
       <ul
-        class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] w-screen max-w-[80%] gap-4 items-center justify-items-center p-4 box-border my-0 mx-auto overflow-auto max-h-[100%]"
+        class="content-albums grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] w-screen max-w-[80%] gap-4 items-center justify-items-center p-4 box-border my-0 mx-auto overflow-auto max-h-[100%]"
       >
         {
-          albums.map(({ title, year, cover }) => (
+          albums.map(({ id, title, year, cover }) => (
             <li
-              class="rounded-sm relative h-32 transform transition-transform duration-500 ease-in-out hover:scale-110 bg-center w-[100%]"
+              class="albums-box rounded-sm relative h-32 transform transition-transform duration-500 ease-in-out bg-center w-[100%] flex flex-col items-center justify-center opacity-0 -translate-y-9"
               style={{ backgroundImage: `url(${cover})` }}
             >
               <div class="rounded-sm z-30">
@@ -33,13 +33,61 @@ const { title = "Albums" } = Astro.props;
                   </h4>
                 </button>
               </div>
+              <a
+                class="btn-see-more bg-gray-700/35 text-gray-200 font-light rounded-lg px-6 py-1 border-gray-200 border-2 opacity-0 z-30"
+                href={`/albums/#${id}`}
+              >
+                See More
+              </a>
             </li>
           ))
         }
       </ul>
     </div>
-    <div class="text-gray-200 pt-4 text-sm font-normal">
+    <div class="text-gray-200 pt-4 text-sm font-light">
       <a href="/albums">See more</a>
     </div>
   </div>
 </section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const albums = entry.target.querySelectorAll(".albums-box");
+        albums.forEach((album, index) => {
+          setTimeout(() => {
+            album.classList.add("show-animated");
+          }, index * 100);
+        });
+      }
+    });
+  });
+
+  const contentAlbums = document.querySelector(".content-albums");
+  if (contentAlbums) {
+    observer.observe(contentAlbums);
+  }
+</script>
+
+<style>
+  .albums-box > .btn-see-more {
+    transform: rotateX(90deg);
+    transition:
+      transform 0.3s ease-in-out 0.2s,
+      opacity 0.3s ease-in-out 0.3s;
+  }
+
+  .albums-box:hover > .btn-see-more {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+
+  .show-animated {
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+      transform 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
+  }
+</style>
