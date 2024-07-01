@@ -740,10 +740,10 @@
     }
   ]
 
-  const metallicaMBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
+  const METALLICA_MBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
 
   export const fetchLastTwoConcerts = async () => {
-    const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${metallicaMBID}/setlists?p=1`, {
+    const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
