@@ -1,0 +1,112 @@
+---
+import Pages from "../components/sections/Pages.astro";
+import Spotify from "../components/Logos/Spotify.astro";
+import { getArtist } from "../services/spotify-get-artist.ts";
+import { getTopTracks } from "../services/spotify-get-top-tracks.ts";
+
+// Call getArtist and store the result
+let metallicaInfo;
+try {
+  metallicaInfo = await getArtist();
+} catch (error) {
+  console.error("Failed to fetch artist info:", error);
+  metallicaInfo = null;
+}
+
+let metallicaTopTracks;
+try {
+  metallicaTopTracks = await getTopTracks();
+} catch (error) {
+  console.error("Failed to fetch artist info:", error);
+  metallicaTopTracks = null;
+}
+---
+
+<Pages>
+  <div slot="statistics">
+    <section
+      id="statistics"
+      class="grid relative bg-gray-700/80 p-7 box-border w-[80%] m-auto rounded-lg"
+    >
+      <main
+        class="relative flex flex-col justify-center m-auto [grid-area:main] mb-4"
+      >
+        {
+          metallicaInfo ? (
+            // <div>{console.log(metallicaInfo)}</div>
+            <>
+              <header class="flex flex-row justify-center items-center gap-2 mb-8 text-center">
+                <span>
+                  <Spotify />
+                </span>
+                <h2 class="font-semibold text-3xl">
+                  Spotify's <span class="rock-font">{metallicaInfo.name}</span>{" "}
+                  statistics
+                </h2>
+              </header>
+              <div class="flex flex-col justify-center items-center gap-2 [&>p]:text-lg">
+                <p>popularity:</p>
+                <span class="text-amber-200">
+                  Position {metallicaInfo.popularity}
+                </span>
+                <p>Genres:</p>
+                <ul class="relatice flex flex-row justify-center gap-3">
+                  {metallicaInfo.genres.map((info) => {
+                    return (
+                      <li class="text-amber-200">
+                        {info.charAt(0).toUpperCase() + info.slice(1)}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p>Followers: </p>
+                <span class="text-amber-200">
+                  {Number(metallicaInfo.followers.total)
+                    .toLocaleString()
+                    .replace(/,/g, ".")}
+                </span>
+              </div>
+            </>
+          ) : (
+            <h2>Artist information could not be loaded</h2>
+          )
+        }
+      </main>
+      <aside class="[grid-area:aside] box-border p-3">
+        {
+          metallicaTopTracks ? (
+            <>
+              <p>Top tracks</p>
+              <ul>
+                {metallicaTopTracks.tracks.map((track) => {
+                  return (
+                    <li class="flex flex-row items-center justify-start gap-2 mb-4">
+                      <picture class="relative w-8 h-8">
+                        <img src={track.album.images[1].url} alt={track.name} />
+                      </picture>
+                      <h2 class="truncate">{track.name}</h2>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          ) : (
+            <h2>Top tracks could not be loaded</h2>
+          )
+        }
+      </aside>
+      <section class="[grid-area:more-info]">MORE INFO</section>
+    </section>
+  </div>
+</Pages>
+
+<style>
+  #statistics {
+    display: grid;
+    grid-template-areas:
+      "main main main"
+      "aside more-info more-info";
+    grid-template-columns: 30% auto;
+    grid-template-rows: auto auto;
+  }
+</style>
