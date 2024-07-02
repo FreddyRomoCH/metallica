@@ -1,5 +1,5 @@
 ---
-import MainHeader from "../components/MainHeader.astro";
+import MainHeader from "../components/header/MainHeader.astro";
 
 interface Props {
   title: string;
@@ -27,32 +27,42 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
   html {
-    font-family: system-ui, sans-serif;
+    font-family: "proxima-nova", system-ui, sans-serif;
     background: url("/images/bg-metallica.jpg") #000;
     background-size: 224px;
   }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
+
+  @font-face {
+    font-family: "proxima-nova";
+    src: url("/fonts/Proxima-Nova-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "proxima-nova";
+    src: url("/fonts/Proxima-Nova-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: fa;
+    src: url("/fonts/Proxima-Nova-Semibold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: fa;
+    src: url("/fonts/Proxima-Nova-Semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
   }
   .rock-font {
     font-family: "Rock Salt", cursive;

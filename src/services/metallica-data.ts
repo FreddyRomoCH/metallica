@@ -696,7 +696,7 @@
     },
   ];
 
-  type BandMember = {
+  export interface BandMember {
     id: number;
     name: string;
     role: string;
@@ -741,13 +741,14 @@
   ]
 
   const METALLICA_MBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
+  const SETLIST_API_KEY = "XA-AHc_5pX09KcF7kWOTJzQLiB--an5es5an";
 
   export const fetchLastTwoConcerts = async () => {
     const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
-        'x-api-key': 'XA-AHc_5pX09KcF7kWOTJzQLiB--an5es5an'
+        'x-api-key': SETLIST_API_KEY
       }
     });
 

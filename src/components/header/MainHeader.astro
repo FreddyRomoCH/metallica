@@ -1,23 +1,25 @@
 ---
-// import MetallicaLogo from "../../public/images/metallica-logo.png";
-// const metallicaLogo = MetallicaLogo.src;
-import LogoMetallica from "./LogoMetallica.astro";
+import MainNav from "./MainNav.astro";
+
+import LogoMetallica from "../Logos/LogoMetallica.astro";
 ---
 
 <header
   class="main-header fixed py-3 px-10 flex items-center top-0 w-full justify-between z-40 text-white bg-gray-700 box-border"
 >
   <div class="flex flex-grow justify-start basis-0">
-    <!-- <a href=""><img class="w-[150px]" src={metallicaLogo} alt="Metallica" /></a> -->
     <LogoMetallica />
   </div>
   <nav>
     <ul
-      class="flex text-sm gap-5 [&>li>a]:px-2 [&>li>a]:p-4 [&>li>a]:rounded-md hover:[&>li>a]:bg-gray-700 ease-in-out"
+      class="flex flex-row text-sm gap-5 [&>li>a]:px-2 [&>li>a]:p-4 [&>li>a]:rounded-md hover:[&>li>a]:bg-gray-200 hover:[&>li>a]:text-gray-700 ease-in-out"
     >
-      <li><a href="/#about">About</a></li>
+      <MainNav title="About" href="#about" />
+      <MainNav title="Albums" href="#albums" />
+      <MainNav title="Concerts" href="#concerts" />
+      <!-- <li><a href="/#about">About</a></li>
       <li><a href="/#albums">Albums</a></li>
-      <li><a href="/#concerts">Concerts</a></li>
+      <li><a href="/#concerts">Concerts</a></li> -->
     </ul>
   </nav>
 
