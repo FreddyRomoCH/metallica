@@ -1,5 +1,4 @@
 const CLIENT_ID = "72aa3dc7b8c44bc7a6ab74e36d80dc01"
-const CLIENT_SECRET = "24751f456ae94013abc6c24b36d37b9c"
 const TOKEN_URL = "https://accounts.spotify.com/api/token"
 
 export const getTokenSpotifyAPI = async () =>{
@@ -8,7 +7,6 @@ export const getTokenSpotifyAPI = async () =>{
     const body = new URLSearchParams({
         grant_type: "client_credentials",
         client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
     })
 
     const headers = {
