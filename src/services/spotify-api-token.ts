@@ -1,10 +1,17 @@
-const CLIENT_ID = "72aa3dc7b8c44bc7a6ab74e36d80dc01"
+import dotenv from 'dotenv';
+dotenv.config();
 
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET
 const TOKEN_URL = "https://accounts.spotify.com/api/token"
 
 export const getTokenSpotifyAPI = async () =>{
 
     //URLSearchParams automatically encodes the parameters in the correct format.
+    if (!CLIENT_ID || !CLIENT_SECRET) {
+        throw new Error('Missing CLIENT_ID or CLIENT_SECRET')
+    }
+
     const body = new URLSearchParams({
         grant_type: "client_credentials",
         client_id: CLIENT_ID,
