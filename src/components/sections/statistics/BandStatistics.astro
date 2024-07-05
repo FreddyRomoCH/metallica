@@ -1,0 +1,83 @@
+---
+import LogoSpotify from "../../Logos/LogoSpotify.astro";
+import { getArtist } from "../../../services/spotify-get-artist.ts";
+
+// Call getArtist and store the result
+let metallicaInfo;
+try {
+  metallicaInfo = await getArtist();
+
+  switch (metallicaInfo?.statusCode) {
+    case 401:
+      console.log("Unauthorized - Access token expired.");
+      break;
+    case 403:
+      console.log("Forbidden.");
+      break;
+    case 429:
+      console.log("Application rate limit exceeded.");
+      break;
+    default:
+      console.log("Code: ", metallicaInfo?.statusCode);
+  }
+} catch (error) {
+  console.error("Failed to fetch artist info:", error);
+  metallicaInfo = null;
+}
+
+const { area, title } = Astro.props;
+---
+
+<section id="band-statistics" class=`[grid-area:${area}] box-border p-3`>
+  {
+    metallicaInfo ? (
+      // <div>{console.log(metallicaInfo)}</div>
+      <>
+        <header class="flex flex-row justify-center items-start gap-2 mb-8 text-center">
+          <span>
+            <LogoSpotify />
+          </span>
+          <h2 class="font-semibold text-lg">{title}</h2>
+        </header>
+        <div class="flex flex-col justify-center items-center gap-5 [&>p]:text-lg">
+          <div class="flex flex-row gap-2">
+            <p>popularity:</p>
+            <span class="text-amber-200">
+              Position {metallicaInfo.data.popularity}
+            </span>
+          </div>
+
+          <div class="flex flex-col items-start gap-2">
+            <p>Genres:</p>
+            <ul class="relatice flex flex-col justify-center gap-3">
+              {metallicaInfo.data.genres.map((info) => {
+                return (
+                  <li class="text-amber-200">
+                    {info.charAt(0).toUpperCase() + info.slice(1)}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div class="flex flex-row gap-2">
+            <p>Followers: </p>
+            <span class="text-amber-200">
+              {Number(metallicaInfo.data.followers.total)
+                .toLocaleString()
+                .replace(/,/g, ".")}
+            </span>
+          </div>
+        </div>
+      </>
+    ) : (
+      <h2>Artist information could not be loaded</h2>
+    )
+  }
+</section>
+
+<style>
+  #band-statistics {
+    grid-column: 1 / 3;
+  }
+</style>

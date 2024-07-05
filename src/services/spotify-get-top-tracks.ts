@@ -13,7 +13,7 @@ type TrackObject = {
         album: {
             name: string;
             images: ImageObject[];
-        }[];
+        };
         uri: string;
         popularity: number;
     }[]

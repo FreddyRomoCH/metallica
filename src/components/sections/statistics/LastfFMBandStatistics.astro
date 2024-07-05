@@ -1,0 +1,16 @@
+---
+import LogoLastFM from "../../Logos/LogoLastFM.astro";
+
+const { area, title } = Astro.props;
+---
+
+<section class=`[grid-area:${area}]`>
+  <header
+    class="flex flex-row justify-center items-center gap-2 mb-8 text-center"
+  >
+    <span>
+      <LogoLastFM />
+    </span>
+    <h2 class="font-semibold text-lg">{title}</h2>
+  </header>
+</section>
