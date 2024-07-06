@@ -741,7 +741,7 @@
   ]
 
   const METALLICA_MBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
-  const SETLIST_API_KEY = "XA-AHc_5pX09KcF7kWOTJzQLiB--an5es5an";
+  const SETLIST_API_KEY = process.env.SETLIST_API_KEY || '';
 
   export const fetchLastTwoConcerts = async () => {
     const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {

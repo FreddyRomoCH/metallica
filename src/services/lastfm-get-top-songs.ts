@@ -1,5 +1,5 @@
 const ARTIST = 'metallica';
-const API_KEY = '6ae972d8a9d9f6e37cf46ff012bc7b47';
+const API_KEY = process.env.LASTFM_API_KEY;
 
 type FMTopSongs = {
     toptracks: {
