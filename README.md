@@ -21,4 +21,4 @@ Statistics web page shows information from Spotify and Last FM using Fetch API
 To see the latest concerts I used Fetch API from setlist.fm
 
 ![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/album-section.png)
-![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/albumsction.png)
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/albums.png)
