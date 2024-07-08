@@ -1,6 +1,7 @@
 ---
 import MainHeader from "../components/header/MainHeader.astro";
 import MainHeaderSM from "../components/header/MainHeaderSM.astro";
+import Footer from "../components/footer/Footer.astro";
 
 interface Props {
   title: string;
@@ -26,6 +27,7 @@ const { title } = Astro.props;
     <MainHeader />
     <MainHeaderSM />
     <slot />
+    <!-- <Footer /> -->
   </body>
 </html>
 <style is:global>

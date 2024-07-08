@@ -24,9 +24,9 @@ import Pages from "../components/sections/Pages.astro";
                 <div class="relative flex flex-col items-center flex-[2] p-8 bg-gray-700 text-gray-200">
                   <div
                     data-index={index}
-                    class={`songs absolute flex flex-col items-center justify-center left-0 top-0 w-0 h-full ${bgColor}`}
+                    class={`songs show-left invisible absolute flex flex-col items-center justify-center left-0 top-0 w-full h-full ${bgColor}`}
                   >
-                    <div class="textSongs opacity-0 flex flex-col gap-1 items-center justify-center">
+                    <div class="textSongs h-0 invisible opacity-0 flex flex-col gap-1 items-center justify-center">
                       {songs.map(({ id, title, length }) => {
                         return (
                           <div class="rock-font">
@@ -80,9 +80,9 @@ import Pages from "../components/sections/Pages.astro";
                 <div class="relative flex flex-col items-center flex-[2] p-8 bg-gray-200 text-gray-700">
                   <div
                     data-index={index}
-                    class={`songs absolute flex flex-col items-center justify-center left-0 top-0 w-0 h-full ${bgColor}`}
+                    class={`songs show-right invisible absolute flex flex-col items-center justify-center right-0 top-0 w-full h-full ${bgColor}`}
                   >
-                    <div class="textSongs opacity-0 flex flex-col gap-1 items-center justify-center">
+                    <div class="textSongs h-0 invisible opacity-0 flex flex-col gap-1 items-center justify-center">
                       {songs.map(({ id, title, length }) => {
                         return (
                           <div class="rock-font">
@@ -122,10 +122,10 @@ import Pages from "../components/sections/Pages.astro";
 </Pages>
 
 <style>
-  .album-content {
+  /* .album-content {
     animation: ReveilBox linear both;
     animation-timeline: view();
-    animation-range: entry 20% cover 40%;
+    animation-range: entry 20% cover 60%;
     opacity: 0;
   }
 
@@ -138,32 +138,46 @@ import Pages from "../components/sections/Pages.astro";
       opacity: 1;
       transform: translateY(0);
     }
-  }
+  } */
 
-  .songs {
-    width: 0;
+  .songs.show-left {
+    left: -60%;
     opacity: 0;
-    transition:
-      width 0.5s ease-in-out,
-      opacity 0.5s ease-in-out;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
   }
 
-  .songs.active {
-    width: 100%;
+  .songs.show-left.active {
+    left: 0;
     opacity: 1;
-    transition:
-      width 0.5s ease-in-out,
-      opacity 0.5s ease-in-out;
+    visibility: visible;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .songs.show-right {
+    right: -60%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .songs.show-right.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease-in-out;
   }
 
   .textSongs {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
   }
 
   .textSongs.active {
     opacity: 1;
-    transition: opacity 0.3s ease-in-out 0.3s;
+    visibility: visible;
+    transition: all 0.3s ease-in-out 0.3s;
   }
 </style>
 

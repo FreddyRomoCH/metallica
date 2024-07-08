@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Footer from "../footer/Footer.astro";
 
 const { title, subtitle } = Astro.props;
 ---
@@ -13,7 +14,7 @@ const { title, subtitle } = Astro.props;
       <p class="text-white text-base font-light">{subtitle}</p>
     </header>
 
-    <section class="relative text-white text-center">
+    <section class="relative text-white text-center overflow-hidden">
       <!-- Albums Page Slot -->
       <slot name="albums" />
       <!-- Members Page Slot -->
@@ -21,5 +22,6 @@ const { title, subtitle } = Astro.props;
       <!-- Statistics Page Slot -->
       <slot name="statistics" />
     </section>
+    <Footer />
   </main>
 </Layout>
