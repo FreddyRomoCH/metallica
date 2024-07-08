@@ -17,7 +17,7 @@ import Pages from "../components/sections/Pages.astro";
         return (
           <div
             id={id.toString()}
-            class={`album-content ${bgColor} relative flex items-center justify-center flex-wrap flex-row w-full min-h-[26rem]`}
+            class={`album-content ${bgColor} relative flex items-center justify-center flex-wrap flex-row w-full sm:min-h-[26rem]`}
           >
             {index % 2 === 0 ? (
               <>
@@ -42,8 +42,21 @@ import Pages from "../components/sections/Pages.astro";
                     {title} <span class="text-orange-300">{year}</span>
                   </h2>
                   <p class="mb-4">{description}</p>
+
+                  {/* Songs on Small devices */}
+                  <div class="flex flex-col gap-1 items-center justify-center sm:hidden">
+                    {songs.map(({ id, title, length }) => {
+                      return (
+                        <div class="rock-font">
+                          <span>{id}. </span>
+                          <span>{title} </span>
+                          <span class="text-orange-300">{length}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div class="relative flex-[1]">
+                <div class="relative flex-[1] hidden sm:block">
                   <div
                     data-index={index}
                     class="see-songs absolute flex flex-col justify-center w-full h-full bg-gray-700/70"
@@ -55,7 +68,7 @@ import Pages from "../components/sections/Pages.astro";
               </>
             ) : (
               <>
-                <div class="relative flex-[1]">
+                <div class="relative flex-[1] hidden sm:block">
                   <div
                     data-index={index}
                     class="see-songs absolute flex flex-col justify-center w-full h-full bg-gray-700/70"
@@ -85,6 +98,19 @@ import Pages from "../components/sections/Pages.astro";
                     {title} <span class="text-orange-300">{year}</span>
                   </h2>
                   <p class="mb-4">{description}</p>
+
+                  {/* Songs on Small devices */}
+                  <div class="flex flex-col gap-1 items-center justify-center sm:hidden">
+                    {songs.map(({ id, title, length }) => {
+                      return (
+                        <div class="rock-font">
+                          <span>{id}. </span>
+                          <span>{title} </span>
+                          <span class="text-orange-300">{length}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </>
             )}

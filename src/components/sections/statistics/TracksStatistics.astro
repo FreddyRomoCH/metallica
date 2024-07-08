@@ -17,7 +17,7 @@ interface props {
 const { area, title } = Astro.props;
 ---
 
-<section class=`[grid-area:${area}] box-border p-3`>
+<section class=`sm:[grid-area:${area}] box-border p-3`>
   {
     metallicaTopTracks ? (
       <>
@@ -27,10 +27,10 @@ const { area, title } = Astro.props;
           </span>
           <h2 class="font-semibold text-lg">{title}</h2>
         </header>
-        <ul>
+        <ul class="flex flex-col flex-wrap items-start content-center">
           {metallicaTopTracks.tracks.map((track) => {
             return (
-              <li class="flex flex-row items-center justify-start gap-2 mb-4">
+              <li class="flex flex-row items-center justify-start gap-2 mb-4 w-[70%]">
                 <picture class="relative w-8 h-8">
                   <img src={track.album.images[1].url} alt={track.name} />
                 </picture>

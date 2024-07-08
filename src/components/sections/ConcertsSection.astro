@@ -5,18 +5,20 @@ const lastTwoConcerts = await fetchLastTwoConcerts();
 ---
 
 <section
-  class="relative h-screen w-screen text-center overflow-hidden flex justify-center"
+  class="relative sm:h-screen w-screen text-center overflow-hidden flex justify-center"
   id="concerts"
 >
-  <div class="relative flex flex-col justify-center h-screen box-border gap-4">
+  <div
+    class="relative flex flex-col justify-center sm:h-screen box-border gap-4"
+  >
     <header class="flex flex-col justify-around">
-      <h2 class="text-gray-200 text-5xl font-medium rock-font mt-16 mb-8">
+      <h2 class="text-gray-200 text-4xl font-medium rock-font mt-16 mb-8">
         Lastest Concerts
       </h2>
     </header>
 
-    <div class="relative flex flex-row justify-center text-white">
-      <ul class="flex gap-16">
+    <div class="relative flex flex-col sm:flex-row justify-center text-white">
+      <ul class="sm:flex gap-2 sm:gap-16">
         {
           lastTwoConcerts.map(
             (concert: {
@@ -38,7 +40,7 @@ const lastTwoConcerts = await fetchLastTwoConcerts();
               eventDate: string;
             }) => (
               <li id={concert.id}>
-                <div class="flex justify-between mb-6">
+                <div class="flex justify-around sm:justify-between mb-6">
                   <div>
                     <Location />
                   </div>
@@ -51,7 +53,7 @@ const lastTwoConcerts = await fetchLastTwoConcerts();
                     {concert.eventDate}
                   </h3>
                 </div>
-                <ul>
+                <ul class="mb-6">
                   {concert.sets.set.length === 0 ? (
                     <p>No songs added yet.</p>
                   ) : (

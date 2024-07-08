@@ -1,6 +1,6 @@
 export function BandMembers({ showMember }) {
   return (
-    <section className="relative flex flex-row w-full text-center px-36 mb-4">
+    <section className="relative flex flex-row w-full text-center px-6 sm:px-36 mb-4">
       <picture className="photo basis-1/3">
         <img
           src={showMember.picture}

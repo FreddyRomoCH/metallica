@@ -5,20 +5,21 @@ const { title = "Albums" } = Astro.props;
 ---
 
 <section
-  class="h-screen w-screen text-center relative overflow-hidden"
+  class="sm:h-screen w-screen text-center relative overflow-hidden py-2 sm:py-0"
   id={title.toLowerCase()}
   title={title}
 >
-  <div class="flex flex-col w-screen h-screen">
+  <div class="flex flex-col justify-center w-screen sm:h-screen">
     <div>
-      <h2 class="text-gray-200 mt-28 text-2xl font-medium mb-4 rock-font">
+      <h2
+        class="text-gray-200 mt-6 sm:mt-28 text-4xl font-medium mb-10 rock-font"
+      >
         {title}
       </h2>
     </div>
-    <div class="relative mb-5 mx-auto w-full">
-      <!-- h-[70vh -->
+    <div class="relative mb-10 mx-auto w-full">
       <ul
-        class="content-albums grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] w-full max-w-[90%] gap-4 items-center justify-items-center px-4 box-border my-0 mx-auto max-h-[100%] overflow-x-hidden"
+        class="content-albums grid sm:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] w-full max-w-[90%] gap-4 items-center justify-items-center px-4 box-border my-0 mx-auto max-h-[100%] overflow-x-hidden"
       >
         {
           albums.map(({ id, title, year, cover }) => (
@@ -44,13 +45,13 @@ const { title = "Albums" } = Astro.props;
         }
       </ul>
     </div>
-    <div>
+    <button>
       <a
         href="/albums"
-        class="bg-gray-700/5 text-gray-200 font-light rounded-lg px-6 py-1 border-gray-200 border-2"
+        class="bg-gray-700/5 text-gray-200 font-light rounded-lg px-6 py-2 border-gray-200 border-2"
         >See more</a
       >
-    </div>
+    </button>
   </div>
 </section>
 

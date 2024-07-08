@@ -3,7 +3,7 @@ import Pages from "../components/sections/Pages.astro";
 import BandStatistics from "../components/sections/statistics/BandStatistics.astro";
 import LastFMTracksStatistics from "../components/sections/statistics/LastFMTracksStatistics.astro";
 import TracksStatistics from "../components/sections/statistics/TracksStatistics.astro";
-import LastfFMBandStatistics from "../components/sections/statistics/LastfFMBandStatistics.astro";
+// import LastfFMBandStatistics from "../components/sections/statistics/LastfFMBandStatistics.astro";
 ---
 
 <Pages>
@@ -13,7 +13,7 @@ import LastfFMBandStatistics from "../components/sections/statistics/LastfFMBand
     </h2>
     <section
       id="statistics"
-      class="grid relative bg-gray-700/80 p-7 box-border w-[80%] m-auto rounded-lg"
+      class="flex flex-col sm:grid relative bg-gray-700/80 p-7 box-border w-[90%] sm:w-4/5 m-auto rounded-lg"
     >
       <BandStatistics area="spotify-info" title="Band Statistics" />
       <TracksStatistics area="spotify-tracks" title="Top Tracks" />
@@ -23,12 +23,14 @@ import LastfFMBandStatistics from "../components/sections/statistics/LastfFMBand
 </Pages>
 
 <style>
-  #statistics {
-    display: grid;
-    grid-template-areas:
-      "spotify-info spotify-info"
-      "spotify-track lastfm-tracks";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+  @media (min-width: 640px) {
+    #statistics {
+      display: grid;
+      grid-template-areas:
+        "spotify-info spotify-info"
+        "spotify-track lastfm-tracks";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+    }
   }
 </style>

@@ -28,12 +28,15 @@ try {
 const { area, title } = Astro.props;
 ---
 
-<section id="band-statistics" class=`[grid-area:${area}] box-border p-3`>
+<section
+  id="band-statistics"
+  class=`sm:[grid-area:${area}] box-border p-3 mb-6`
+>
   {
     metallicaInfo ? (
       // <div>{console.log(metallicaInfo)}</div>
       <>
-        <header class="flex flex-row justify-center items-start gap-2 mb-8 text-center">
+        <header class="flex flex-row justify-center items-center gap-2 mb-8 text-center">
           <span>
             <LogoSpotify />
           </span>

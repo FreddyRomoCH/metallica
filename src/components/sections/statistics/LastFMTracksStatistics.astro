@@ -18,7 +18,7 @@ interface props {
 const { area, title } = Astro.props;
 ---
 
-<section class=`[grid-area:${area}] box-border p-3`>
+<section class=`sm:[grid-area:${area}] box-border p-3`>
   <header
     class="flex flex-row justify-center items-center gap-2 mb-8 text-center"
   >
@@ -27,20 +27,26 @@ const { area, title } = Astro.props;
     </span>
     <h2 class="font-semibold text-lg">{title}</h2>
   </header>
-  {
-    topSongs ? (
-      topSongs.toptracks.track.map((song) => {
-        return (
-          <div class="flex flex-row items-center justify-start gap-2 mb-4">
-            <picture class="relative w-8 h-8">
-              <img src={song.albumImage} alt={song.name} />
-            </picture>
-            <h2 class="truncate">{song.name}</h2>
-          </div>
-        );
-      })
-    ) : (
-      <h2>Top songs could not be loaded</h2>
-    )
-  }
+
+  <ul class="flex flex-col flex-wrap items-start content-center">
+    {
+      topSongs ? (
+        topSongs.toptracks.track.map((song) => {
+          return (
+            <li class="flex flex-row items-center justify-start gap-2 mb-4 w-[70%]">
+              <picture class="relative w-8 h-8">
+                <img
+                  src={song.albumImage}
+                  alt={`Cover image of ${song.name}`}
+                />
+              </picture>
+              <h2 class="truncate">{song.name}</h2>
+            </li>
+          );
+        })
+      ) : (
+        <h2>Top songs could not be loaded</h2>
+      )
+    }
+  </ul>
 </section>
