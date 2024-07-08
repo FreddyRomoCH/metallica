@@ -1,54 +1,24 @@
-# Astro Starter Kit: Basics
+# Metallica Fan Web Page
 
-```sh
-npm create astro@latest -- --template basics
-```
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/FreddyRomoCH/metallica/tree/main)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/home.png)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Metallica fan web page for Portfolio purposes. This web page was implemented usinf the Astro framework, React for an interactive page, Typescript and TailWindCSS (Responsive). Fetch APi was used to get information from : Spotify, LastFM, Setlist.fm.
 
-## 🚀 Project Structure
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/members.png)
 
-Inside of your Astro project, you'll see the following folders and files:
+Members sections used React for storing states and to have the possibility to see a particular member details while clicking the specific button.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/statistics.png)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Statistics web page shows information from Spotify and Last FM using Fetch API
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/latest-concerts.png)
 
-Any static assets, like images, can be placed in the `public/` directory.
+To see the latest concerts I used Fetch API from setlist.fm
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/album-section.png)
+![just-the-basics](https://github.com/FreddyRomoCH/metallica/blob/main/public/images/screenshots/albumsction.png)
