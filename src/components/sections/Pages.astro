@@ -3,6 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import Footer from "../footer/Footer.astro";
 
 const { title, subtitle } = Astro.props;
+
+let positionFooter = "relative";
+
+if (title === "error-404") {
+  positionFooter = "absolute";
+}
 ---
 
 <Layout title={title}>
@@ -21,7 +27,9 @@ const { title, subtitle } = Astro.props;
       <slot name="members" />
       <!-- Statistics Page Slot -->
       <slot name="statistics" />
+      <!-- Statistics Page Slot -->
+      <slot name="error-404" />
     </section>
-    <Footer />
+    <Footer position={positionFooter} />
   </main>
 </Layout>

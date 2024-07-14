@@ -1,9 +1,10 @@
 ---
-import MainNav from "../header/MainNav.astro";
+// import MainNav from "../header/MainNav.astro";
+const { position } = Astro.props;
 ---
 
 <footer
-  class="relative text-gray-200 text-sm text-center bottom-0 left-0 h-auto w-full bg-gray-700/35 z-40 p-3"
+  class={`${position} text-gray-200 text-sm text-center bottom-0 left-0 h-auto w-full bg-gray-700/35 z-40 p-3`}
 >
   <p>
     Web Page built by <span class="font-semibold text-md">Freddy Romo</span> - 2024
