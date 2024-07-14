@@ -7,7 +7,6 @@ if (process.env.SETLIST_API_KEY === undefined) {
 }
 
 const SETLIST_API_KEY = process.env.SETLIST_API_KEY as string;
-console.log("Api Key: ", SETLIST_API_KEY)
   
   export const albums = [
     {
@@ -761,7 +760,8 @@ console.log("Api Key: ", SETLIST_API_KEY)
     });
 
     if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.status} - ${response.statusText}`);
+      // throw new Error(`Network response was not ok: ${response.status} - ${response.statusText}`);
+      return [{error: response.status, message: response.statusText}];
     }
 
     const data = await response.json();

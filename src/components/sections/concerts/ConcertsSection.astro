@@ -1,0 +1,33 @@
+---
+import { fetchLastTwoConcerts } from "../../../services/metallica-data";
+const lastTwoConcerts = await fetchLastTwoConcerts();
+
+import Concerts from "./Concerts.astro";
+---
+
+<section
+  class="relative sm:h-screen w-screen text-center overflow-hidden flex justify-center"
+  id="concerts"
+>
+  <div
+    class="relative flex flex-col justify-center sm:h-screen box-border gap-4"
+  >
+    <header class="flex flex-col justify-around">
+      <h2 class="text-gray-200 text-4xl font-medium rock-font mt-16 mb-8">
+        Lastest Concerts
+      </h2>
+    </header>
+
+    {
+      lastTwoConcerts[0].error ? (
+        <div class="border-red-600 border rounded-sm p-4">
+          <p class="text-white text-lg tracking-widest">
+            {lastTwoConcerts[0].message}
+          </p>
+        </div>
+      ) : (
+        <Concerts lastConcerts={lastTwoConcerts} />
+      )
+    }
+  </div>
+</section>

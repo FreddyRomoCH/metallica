@@ -1,0 +1,68 @@
+---
+import Location from "../../icons/Location.astro";
+
+interface Props {
+  lastConcerts: {
+    id: string;
+    venue: {
+      name: string;
+      city: {
+        name: string;
+      };
+    };
+    sets: {
+      set: {
+        song: {
+          name: string;
+        }[];
+      }[];
+    };
+    name: string;
+    eventDate: string;
+  }[];
+}
+
+const { lastConcerts } = Astro.props;
+---
+
+<div class="relative flex flex-col sm:flex-row justify-center text-white">
+  <ul class="sm:flex gap-2 sm:gap-16">
+    {
+      lastConcerts.map((concert) => (
+        <li id={concert.id}>
+          <div class="flex justify-around sm:justify-between mb-6">
+            <div>
+              <Location />
+            </div>
+            <p class=" text-lg">
+              {/* Location Concert */}
+              {concert.venue.name}, {concert.venue.city.name}
+            </p>
+            {/* Date Concert */}
+            <h3 class="text-amber-200 text-[12px] italic ml-3">
+              {concert.eventDate}
+            </h3>
+          </div>
+          <ul class="mb-6">
+            {concert.sets.set.length === 0 ? <p>No songs added yet.</p> : ""}
+            {concert.sets.set.map(
+              (set: {
+                song: {
+                  name: string;
+                }[];
+              }) => (
+                <li>
+                  <ul>
+                    {set.song.map((song: { name: string }) => (
+                      <li class="mb-1 text-sm">{song.name}</li>
+                    ))}
+                  </ul>
+                </li>
+              )
+            )}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</div>
