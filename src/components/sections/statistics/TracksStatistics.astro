@@ -5,13 +5,14 @@ import { getTopTracks } from "../../../services/spotify-get-top-tracks.ts";
 let metallicaTopTracks;
 try {
   metallicaTopTracks = await getTopTracks();
-} catch (error) {
-  console.error("Failed to fetch artist info:", error);
-  metallicaTopTracks = null;
-}
+  // console.log(metallicaTopTracks);
 
-interface props {
-  area: string;
+  if (metallicaTopTracks?.statusCode !== 200) {
+    metallicaTopTracks = null;
+  }
+} catch (error) {
+  // console.error("Failed to fetch artist info:", error);
+  metallicaTopTracks = null;
 }
 
 const { area, title } = Astro.props;
@@ -28,7 +29,7 @@ const { area, title } = Astro.props;
           <h2 class="font-semibold text-lg">{title}</h2>
         </header>
         <ul class="flex flex-col flex-wrap items-start content-center">
-          {metallicaTopTracks.tracks.map((track) => {
+          {metallicaTopTracks.data.tracks.map((track) => {
             return (
               <li class="flex flex-row items-center justify-start gap-2 mb-4 w-[70%]">
                 <picture class="relative w-8 h-8">
@@ -41,7 +42,13 @@ const { area, title } = Astro.props;
         </ul>
       </>
     ) : (
-      <h2>Top tracks could not be loaded</h2>
+      <div slot="error-404" class="relative flex flex-col items-center">
+        <div class="border-red-600 border rounded-sm p-4 bg-gray-700/5 mb-6">
+          <p class="text-white text-lg tracking-widest">
+            Top tracks could not be loaded
+          </p>
+        </div>
+      </div>
     )
   }
 </section>

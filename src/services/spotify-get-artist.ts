@@ -13,7 +13,8 @@ type Artist = {
         height: number;
         url: string;
         width: number;
-    }[]
+    }[];
+    message?: string;
 }
 
 type ArtistResponse = {
@@ -25,6 +26,10 @@ export const getArtist = async (): Promise<ArtistResponse | undefined> => {
     // We wait for the Token to resolve before we can use it.
     const accessToken = await getTokenSpotifyAPI()
 
+    if (!accessToken) {
+        return { data: {message: "Artist not found"} as Artist, statusCode: 404 }
+    }
+
     const url = `https://api.spotify.com/v1/artists/${ARTIST_LINK}`
     const headers = {
         'Authorization': `Bearer ${accessToken}`
@@ -35,13 +40,13 @@ export const getArtist = async (): Promise<ArtistResponse | undefined> => {
         const statusCode = response.status
 
         if (!response.ok) {
-            throw new Error('Failed to get artist')
+            return { data: {message: "Artist not found"} as Artist, statusCode }
         }else{
             const data = await response.json()
             return { data, statusCode }
         }
 
     } catch (error) {
-        console.log('Error:', error)
+        return { data: {message: "Internal Server Error"} as Artist, statusCode: 500 }
     }
 };

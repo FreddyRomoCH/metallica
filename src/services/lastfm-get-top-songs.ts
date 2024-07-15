@@ -23,7 +23,8 @@ type FMTopSongs = {
             }[];
             albumImage?: string;
         }[]
-    }
+    };
+    message?: string;
 }
 
 type FMTrackInfo = {
@@ -34,18 +35,26 @@ type FMTrackInfo = {
                 size: string;
             }[]
         }
-    }
+    };
 
 }
 
-export const lastFMGetTopSongs = async (): Promise<FMTopSongs | undefined> => {
+type FMTopSongsResponse = {
+    data: FMTopSongs;
+    statusCode: number;
+}
+
+export const lastFMGetTopSongs = async (): Promise<FMTopSongsResponse | undefined> => {
     const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${ARTIST}&api_key=${API_KEY}&limit=10&format=json`;
 
     try {
         const response = await fetch(url);
 
-        if (response.ok) {
-            const data: FMTopSongs = await response.json();
+        if (!response.ok) {
+            return { data: {message: "Artist not found"} as FMTopSongs, statusCode: response.status };
+        }
+
+        const data: FMTopSongs = await response.json();
 
             for (const song of data.toptracks.track) {
                 if (song.mbid) {
@@ -57,15 +66,13 @@ export const lastFMGetTopSongs = async (): Promise<FMTopSongs | undefined> => {
                             song.albumImage = albumData.track.album.image[2]["#text"];
                         }
                     } catch (error) {
-                        console.log('Error: ', error);
                     }
                 }
             }
 
-            return data;
-        }
+            return { data, statusCode: response.status };
+
     } catch (error) {
-        console.log('Error: ', error);
+        return { data: {message: "Internal Server Error"} as FMTopSongs, statusCode: 500 };
     }
-    return undefined;
 }

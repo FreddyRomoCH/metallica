@@ -16,11 +16,21 @@ type TrackObject = {
         };
         uri: string;
         popularity: number;
-    }[]
+    }[];
+    message?: string;
 }
 
-export const getTopTracks = async (): Promise<TrackObject | undefined> => {
+type TrackResponse = {
+    data: TrackObject;
+    statusCode: number;
+}
+
+export const getTopTracks = async (): Promise<TrackResponse | undefined> => {
     const accesToken = await getTokenSpotifyAPI();
+    if (!accesToken) {
+        return { data: {message: "Artist not found"} as TrackObject, statusCode: 404 } 
+    }
+
     const url = `https://api.spotify.com/v1/artists/${ARTIST_LINK}/top-tracks`;
 
     const headers = {
@@ -35,12 +45,12 @@ export const getTopTracks = async (): Promise<TrackObject | undefined> => {
             }
         )
         if (!response.ok) {
-            throw new Error('Failed to get top tracks')
+            return { data: {message: "Artist not found"} as TrackObject, statusCode: response.status }
         }
 
         const data = await response.json()
-        return data
+        return {data, statusCode: response.status}
     }catch(error){
-        console.log('Error:', error)
+        return { data: {message: "Internal Server Error"} as TrackObject, statusCode: 500 }
     }
 }

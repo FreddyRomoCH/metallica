@@ -6,22 +6,12 @@ import { getArtist } from "../../../services/spotify-get-artist.ts";
 let metallicaInfo;
 try {
   metallicaInfo = await getArtist();
+  // console.log(metallicaInfo);
 
-  switch (metallicaInfo?.statusCode) {
-    case 401:
-      console.log("Unauthorized - Access token expired.");
-      break;
-    case 403:
-      console.log("Forbidden.");
-      break;
-    case 429:
-      console.log("Application rate limit exceeded.");
-      break;
-    default:
-      console.log("Code: ", metallicaInfo?.statusCode);
+  if (metallicaInfo?.statusCode !== 200) {
+    metallicaInfo = null;
   }
 } catch (error) {
-  console.error("Failed to fetch artist info:", error);
   metallicaInfo = null;
 }
 
@@ -74,7 +64,13 @@ const { area, title } = Astro.props;
         </div>
       </>
     ) : (
-      <h2>Artist information could not be loaded</h2>
+      <div slot="error-404" class="relative flex flex-col items-center">
+        <div class="border-red-600 border rounded-sm p-4 bg-gray-700/5 mb-6">
+          <p class="text-white text-lg tracking-widest">
+            Artist information could not be loaded
+          </p>
+        </div>
+      </div>
     )
   }
 </section>

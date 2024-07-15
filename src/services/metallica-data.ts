@@ -750,20 +750,30 @@ const SETLIST_API_KEY = process.env.SETLIST_API_KEY as string;
     }
   ]
 
-  export const fetchLastTwoConcerts = async () => {
-    const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'x-api-key': SETLIST_API_KEY
+  export const fetchLastTwoConcerts = async (): Promise<Array<any>> => {
+    try {
+      const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'x-api-key': SETLIST_API_KEY
+        }
+      });
+  
+      if (!response.ok) {
+        return [{error: response.status, message: response.statusText}];
       }
-    });
-
-    if (!response.ok) {
-      // throw new Error(`Network response was not ok: ${response.status} - ${response.statusText}`);
-      return [{error: response.status, message: response.statusText}];
+  
+      const data = await response.json();
+      return data.setlist.slice(0, 2); // Get the last 2 results
+    } catch (error) {
+      if (error instanceof TypeError) {
+        if (error.cause instanceof Error) {
+          return [{ error: 'Fetch failed', message: error.cause.message}]
+        }
+        return [{ error: 'Fetch failed', message: error.message}]
+      }else{
+        return [{ error: 'Fetch failed', message: error}]
+      }
     }
-
-    const data = await response.json();
-    return data.setlist.slice(0, 2); // Get the last 2 results
   }
