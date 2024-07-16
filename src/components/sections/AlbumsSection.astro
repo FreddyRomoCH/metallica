@@ -35,7 +35,7 @@ const { title = "Albums" } = Astro.props;
                 </button>
               </div>
               <a
-                class="btn-see-more bg-gray-700/35 text-gray-200 font-light rounded-lg px-6 py-1 border-gray-200 border-2 opacity-0 z-30"
+                class="btn-see-more bg-gray-700/35 text-gray-200 font-light rounded-lg px-6 py-1 border-gray-200 border-2 opacity-100 sm:opacity-0 z-30 "
                 href={`/albums/#${id}`}
               >
                 See More
@@ -76,16 +76,18 @@ const { title = "Albums" } = Astro.props;
 </script>
 
 <style>
-  .albums-box > .btn-see-more {
-    transform: rotateX(90deg);
-    transition:
-      transform 0.3s ease-in-out 0.2s,
-      opacity 0.3s ease-in-out 0.3s;
-  }
+  @media screen and (min-width: 640px) {
+    .albums-box > .btn-see-more {
+      transform: rotateX(90deg);
+      transition:
+        transform 0.3s ease-in-out 0.2s,
+        opacity 0.3s ease-in-out 0.3s;
+    }
 
-  .albums-box:hover > .btn-see-more {
-    transform: rotateX(0);
-    opacity: 1;
+    .albums-box:hover > .btn-see-more {
+      transform: rotateX(0);
+      opacity: 1;
+    }
   }
 
   .show-animated {

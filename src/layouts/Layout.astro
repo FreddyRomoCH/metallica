@@ -75,4 +75,101 @@ const { title } = Astro.props;
     font-weight: 400;
     font-style: normal;
   }
+
+  @keyframes changeStatusLine1 {
+    from {
+      top: 0;
+      transform: rotate(0deg);
+    }
+    to {
+      top: 20px;
+      transform: rotate(45deg);
+    }
+  }
+  @keyframes changeStatusLine1Reverse {
+    from {
+      top: 20px;
+      transform: rotate(45deg);
+    }
+    to {
+      top: 0;
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes changeStatusLine3 {
+    from {
+      bottom: 0;
+      transform: rotate(0deg);
+    }
+    to {
+      bottom: 17px;
+      transform: rotate(-45deg);
+    }
+  }
+  @keyframes changeStatusLine3Reverse {
+    from {
+      bottom: 17px;
+      transform: rotate(-45deg);
+    }
+    to {
+      bottom: 0;
+      transform: rotate(0deg);
+    }
+  }
+
+  .menu .line-1 {
+    animation: changeStatusLine1Reverse 0.5s ease-out both;
+  }
+
+  .menu.open .line-1 {
+    animation: changeStatusLine1 0.5s ease-out both;
+  }
+
+  .menu .line-2 {
+    width: 100%;
+    opacity: 1;
+    transition: all 0.5s ease-out;
+  }
+
+  .menu.open .line-2 {
+    opacity: 0;
+    width: 0%;
+    transition: all 0.2s ease-out;
+  }
+
+  .menu .line-3 {
+    animation: changeStatusLine3Reverse 0.5s ease-out both;
+  }
+
+  .menu.open .line-3 {
+    animation: changeStatusLine3 0.5s ease-out both;
+  }
+
+  #menu-modal {
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+
+  #menu-modal.open {
+    opacity: 1;
+    height: 100vh;
+    visibility: visible;
+    transition:
+      /* opacity 0.5s ease-in-out, */
+      height 0.5s ease-in-out,
+      visibility 0.2s linear;
+  }
+
+  #menu-modal .menu-list {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  #menu-modal.open .menu-list {
+    opacity: 1;
+    transition: opacity 1s ease-in-out 0.4s;
+  }
 </style>

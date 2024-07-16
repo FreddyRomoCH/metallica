@@ -5,7 +5,7 @@ import MainNav from "./MainNav.astro";
 <section>
   <nav class="flex flex-col justify-center items-center h-screen">
     <ul
-      class="menu-list relative flex flex-col justify-cente flex-nowrap items-center gap-8 text-gray-200 text-2xl font-bold tracking-widest"
+      class="menu-list relative flex flex-col justify-cente flex-nowrap items-center gap-8 text-gray-200 text-2xl font-bold tracking-widest opacity-0"
     >
       <MainNav title="About" href="#about" />
       <MainNav title="Albums" href="#albums" />
@@ -14,10 +14,3 @@ import MainNav from "./MainNav.astro";
     </ul>
   </nav>
 </section>
-
-<!-- <script>
-  document.querySelectorAll(".menu-list li")?.forEach((li) => {
-    li.addEventListener("click", () => {
-      document.querySelector(".menu")?.classList.remove("open");
-    });
-  }); -->
