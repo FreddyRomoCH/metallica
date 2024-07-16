@@ -14,7 +14,7 @@ if (title === "error-404") {
 <Layout title={title}>
   <main>
     <header class="relative w-full text-center mt-36 mb-16 px-6 sm:px-36">
-      <h2 class="text-white text-4xl font-medium my-5 mb-14 rock-font">
+      <h2 class="text-white text-4xl font-medium my-5 mb-14 font-rock">
         {title}
       </h2>
       <p class="text-white text-base font-light">{subtitle}</p>
@@ -33,11 +33,3 @@ if (title === "error-404") {
     <Footer position={positionFooter} />
   </main>
 </Layout>
-
-<style>
-  .rock-font {
-    font-family: "Rock Salt", "proxima-nova", system-ui, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-</style>

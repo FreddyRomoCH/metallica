@@ -29,7 +29,7 @@ import Pages from "../components/sections/Pages.astro";
                     <div class="textSongs h-0 invisible opacity-0 flex flex-col gap-1 items-center justify-center">
                       {songs.map(({ id, title, length }) => {
                         return (
-                          <div class="rock-font">
+                          <div class="font-rock">
                             <span>{id}. </span>
                             <span>{title} </span>
                             <span class="text-orange-300">{length}</span>
@@ -38,7 +38,7 @@ import Pages from "../components/sections/Pages.astro";
                       })}
                     </div>
                   </div>
-                  <h2 class="text-xl mb-4 rock-font">
+                  <h2 class="text-xl mb-4 font-rock">
                     {title} <span class="text-orange-300">{year}</span>
                   </h2>
                   <p class="mb-4">{description}</p>
@@ -47,7 +47,7 @@ import Pages from "../components/sections/Pages.astro";
                   <div class="flex flex-col gap-1 items-center justify-center sm:hidden">
                     {songs.map(({ id, title, length }) => {
                       return (
-                        <div class="rock-font">
+                        <div class="font-rock">
                           <span>{id}. </span>
                           <span>{title} </span>
                           <span class="text-orange-300">{length}</span>
@@ -61,7 +61,7 @@ import Pages from "../components/sections/Pages.astro";
                     data-index={index}
                     class="see-songs absolute flex flex-col justify-center w-full h-full bg-gray-700/70"
                   >
-                    <h3 class="rock-font text-xl text-white">See Songs</h3>
+                    <h3 class="font-rock text-xl text-white">See Songs</h3>
                   </div>
                   <img class="w-full" src={cover} alt={title} />
                 </div>
@@ -73,7 +73,7 @@ import Pages from "../components/sections/Pages.astro";
                     data-index={index}
                     class="see-songs absolute flex flex-col justify-center w-full h-full bg-gray-700/70"
                   >
-                    <h3 class="rock-font text-xl text-white">See Songs</h3>
+                    <h3 class="font-rock text-xl text-white">See Songs</h3>
                   </div>
                   <img class="w-full" src={cover} alt={title} />
                 </div>
@@ -85,7 +85,7 @@ import Pages from "../components/sections/Pages.astro";
                     <div class="textSongs h-0 invisible opacity-0 flex flex-col gap-1 items-center justify-center">
                       {songs.map(({ id, title, length }) => {
                         return (
-                          <div class="rock-font">
+                          <div class="font-rock">
                             <span>{id}. </span>
                             <span>{title} </span>
                             <span class="text-orange-300">{length}</span>
@@ -94,7 +94,7 @@ import Pages from "../components/sections/Pages.astro";
                       })}
                     </div>
                   </div>
-                  <h2 class="text-xl mb-4 rock-font">
+                  <h2 class="text-xl mb-4 font-rock">
                     {title} <span class="text-orange-300">{year}</span>
                   </h2>
                   <p class="mb-4">{description}</p>
@@ -103,7 +103,7 @@ import Pages from "../components/sections/Pages.astro";
                   <div class="flex flex-col gap-1 items-center justify-center sm:hidden">
                     {songs.map(({ id, title, length }) => {
                       return (
-                        <div class="rock-font">
+                        <div class="font-rock">
                           <span>{id}. </span>
                           <span>{title} </span>
                           <span class="text-orange-300">{length}</span>
@@ -210,11 +210,3 @@ import Pages from "../components/sections/Pages.astro";
     });
   });
 </script>
-
-<style>
-  .rock-font {
-    font-family: "Rock Salt", "proxima-nova", system-ui, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-</style>

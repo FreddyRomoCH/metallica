@@ -10,7 +10,7 @@ export function BandMembers({ showMember }) {
       </picture>
 
       <div className="info flex-grow items-start basis-2/3">
-        <h3 className=" text-lg font-medium mb-3 rock-font">
+        <h3 className=" text-lg font-medium mb-3 font-rock">
           {showMember.name}
         </h3>
         <div className="flex flex-row justify-around mb-4">
