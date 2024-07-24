@@ -1,14 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const METALLICA_MBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
-if (process.env.SETLIST_API_KEY === undefined) {
-  throw new Error("SETLIST_API_KEY environment variable is not set");
-}
-
-const SETLIST_API_KEY = process.env.SETLIST_API_KEY as string;
+import { type FetchResult, type SetlistResponse } from "../types/types.d"; 
+import { type BandMembers } from "../types/types.d";
   
-  export const albums = [
+export const albums = [
     {
       id: 1,
       title: "Kill 'Em All",
@@ -704,18 +700,9 @@ const SETLIST_API_KEY = process.env.SETLIST_API_KEY as string;
         }
       ]
     },
-  ];
+];
 
-  export interface BandMember {
-    id: number;
-    name: string;
-    role: string;
-    born: string;
-    bio: string;
-    picture: string;
-  }
-
-  export const band: BandMember[] = [
+export const band: BandMembers[] = [
     {
       id: 1,
       name: "James Hetfield",
@@ -748,32 +735,37 @@ const SETLIST_API_KEY = process.env.SETLIST_API_KEY as string;
       bio: "Roberto Agustín Miguel Santiago Samuel Trujillo Veracruz is an American musician and songwriter. He has been the bassist of the American heavy metal band Metallica since 2003. He was also a member of crossover thrash band Suicidal Tendencies, funk metal supergroup Infectious Grooves, heavy metal band Black Label Society, and has worked with Jerry Cantrell and Ozzy Osbourne.",
       picture: "/images/members/robert-trujillo.jpg"
     }
-  ]
+]
 
-  export const fetchLastTwoConcerts = async (): Promise<Array<any>> => {
-    try {
-      const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'x-api-key': SETLIST_API_KEY
-        }
-      });
-  
-      if (!response.ok) {
-        return [{error: response.status, message: response.statusText}];
+const METALLICA_MBID = "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab";
+if (process.env.SETLIST_API_KEY === undefined) {
+  throw new Error("SETLIST_API_KEY environment variable is not set");
+}
+
+const SETLIST_API_KEY = process.env.SETLIST_API_KEY as string;
+
+export const fetchLastTwoConcerts = async (): Promise<FetchResult> => {
+  try {
+    const response = await fetch(`https://api.setlist.fm/rest/1.0/artist/${METALLICA_MBID}/setlists?p=1`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'x-api-key': SETLIST_API_KEY
       }
-  
-      const data = await response.json();
-      return data.setlist.slice(0, 2); // Get the last 2 results
-    } catch (error) {
-      if (error instanceof TypeError) {
-        if (error.cause instanceof Error) {
-          return [{ error: 'Fetch failed', message: error.cause.message}]
-        }
-        return [{ error: 'Fetch failed', message: error.message}]
-      }else{
-        return [{ error: 'Fetch failed', message: error}]
-      }
+    });
+
+    if (!response.ok) {
+      return [{error: response.status.toString(), message: response.statusText}];
+    }
+
+    const data: SetlistResponse = await response.json();
+    return data.setlist.slice(0, 2); // Get the last 2 results
+
+  } catch (error) {
+    if (error instanceof TypeError) {
+      return [{ error: 'Fetch failed', message: error.message }];
+    }else{
+      return [{ error: 'Fetch failed', message: String(error) }];
     }
   }
+}

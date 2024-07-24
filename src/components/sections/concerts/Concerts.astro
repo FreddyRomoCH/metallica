@@ -1,26 +1,6 @@
 ---
 import Location from "../../icons/Location.astro";
-
-interface Props {
-  lastConcerts: {
-    id: string;
-    venue: {
-      name: string;
-      city: {
-        name: string;
-      };
-    };
-    sets: {
-      set: {
-        song: {
-          name: string;
-        }[];
-      }[];
-    };
-    name: string;
-    eventDate: string;
-  }[];
-}
+import { type Setlist } from "../../../types/types.d";
 
 const { lastConcerts } = Astro.props;
 ---
@@ -28,7 +8,7 @@ const { lastConcerts } = Astro.props;
 <div class="relative flex flex-col sm:flex-row justify-center text-white">
   <ul class="sm:flex gap-2 sm:gap-16">
     {
-      lastConcerts.map((concert) => (
+      lastConcerts.map((concert: Setlist) => (
         <li id={concert.id}>
           <div class="flex justify-around sm:justify-between mb-6">
             <div>

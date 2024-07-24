@@ -1,31 +1,8 @@
 import {getTokenSpotifyAPI} from "./spotify-api-token.ts"
 import {ARTIST_LINK} from "./spotify-get-artist.ts"
+import { type TrackObject, type TrackResponse } from "../types/types.d"
 
-type ImageObject = {
-    url: string;
-    height: number;
-    width: number;
-}
-
-type TrackObject = {
-    tracks: {
-        name: string;
-        album: {
-            name: string;
-            images: ImageObject[];
-        };
-        uri: string;
-        popularity: number;
-    }[];
-    message?: string;
-}
-
-type TrackResponse = {
-    data: TrackObject;
-    statusCode: number;
-}
-
-export const getTopTracks = async (): Promise<TrackResponse | undefined> => {
+export const getTopTracks = async (): Promise<TrackResponse> => {
     const accesToken = await getTokenSpotifyAPI();
     if (!accesToken) {
         return { data: {message: "Artist not found"} as TrackObject, statusCode: 404 } 

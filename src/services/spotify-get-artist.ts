@@ -1,28 +1,8 @@
 import { getTokenSpotifyAPI } from "./spotify-api-token.ts"
+import { type ArtistResponse, type Artist } from "../types/types.d"
 export const ARTIST_LINK = "2ye2Wgw4gimLv2eAKyk1NB";
 
-type Artist = {
-    id: string;
-    name: string;
-    genres: string[];
-    popularity: number;
-    followers: {
-        total: number;
-    };
-    images: {
-        height: number;
-        url: string;
-        width: number;
-    }[];
-    message?: string;
-}
-
-type ArtistResponse = {
-    data: Artist;
-    statusCode: number;
-}
-
-export const getArtist = async (): Promise<ArtistResponse | undefined> => {
+export const getArtist = async (): Promise<ArtistResponse> => {
     // We wait for the Token to resolve before we can use it.
     const accessToken = await getTokenSpotifyAPI()
 

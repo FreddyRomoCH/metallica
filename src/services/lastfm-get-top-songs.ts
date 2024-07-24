@@ -1,50 +1,9 @@
+import { type FMTopSongs, type FMTrackInfo, type FMTopSongsResponse} from '../types/types.d'
+
 const ARTIST = 'metallica';
 const API_KEY = process.env.LASTFM_API_KEY;
 
-type FMTopSongs = {
-    toptracks: {
-        track: {
-            name: string;
-            playcount: number;
-            listeners: number;
-            mbid: string;
-            url: string;
-            streamable: {
-                fulltrack: string;
-            };
-            artist: {
-                name: string;
-                mbid: string;
-                url: string;
-            };
-            image: {
-                '#text': string;
-                size: string;
-            }[];
-            albumImage?: string;
-        }[]
-    };
-    message?: string;
-}
-
-type FMTrackInfo = {
-    track: {
-        album: {
-            image: {
-                '#text': string;
-                size: string;
-            }[]
-        }
-    };
-
-}
-
-type FMTopSongsResponse = {
-    data: FMTopSongs;
-    statusCode: number;
-}
-
-export const lastFMGetTopSongs = async (): Promise<FMTopSongsResponse | undefined> => {
+export const lastFMGetTopSongs = async (): Promise<FMTopSongsResponse> => {
     const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${ARTIST}&api_key=${API_KEY}&limit=10&format=json`;
 
     try {

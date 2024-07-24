@@ -1,7 +1,7 @@
 ---
 import { fetchLastTwoConcerts } from "../../../services/metallica-data";
-const lastTwoConcerts = await fetchLastTwoConcerts();
-
+import { type FetchError } from "../../../types/types.d";
+const lastTwoConcerts = (await fetchLastTwoConcerts()) as FetchError[];
 import Concerts from "./Concerts.astro";
 ---
 
