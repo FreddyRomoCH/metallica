@@ -1,8 +1,7 @@
 ---
-import { fetchLastTwoConcerts } from "../../../services/metallica-data";
-import { type FetchError } from "../../../types/types.d";
-const lastTwoConcerts = (await fetchLastTwoConcerts()) as FetchError[];
-import Concerts from "./Concerts.astro";
+import LastConcerts from "./LastConcerts.astro";
+
+export const prerender = true;
 ---
 
 <section
@@ -18,16 +17,6 @@ import Concerts from "./Concerts.astro";
       </h2>
     </header>
 
-    {
-      lastTwoConcerts[0].error ? (
-        <div class="border-red-600 border rounded-sm p-4 bg-gray-700/50">
-          <p class="text-white text-lg tracking-widest">
-            {lastTwoConcerts[0].message}
-          </p>
-        </div>
-      ) : (
-        <Concerts lastConcerts={lastTwoConcerts} />
-      )
-    }
+    <LastConcerts server:defer />
   </div>
 </section>
