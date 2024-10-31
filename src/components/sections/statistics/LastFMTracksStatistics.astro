@@ -5,7 +5,6 @@ import { lastFMGetTopSongs } from "../../../services/lastfm-get-top-songs";
 let topSongs;
 try {
   topSongs = await lastFMGetTopSongs();
-  console.log(topSongs);
   if (topSongs?.statusCode !== 200) {
     topSongs = null;
   }
