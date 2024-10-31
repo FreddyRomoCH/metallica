@@ -4,5 +4,11 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@services/*": ["src/services/*"],
+    }
   },
 }

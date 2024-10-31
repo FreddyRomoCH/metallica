@@ -1,6 +1,8 @@
 ---
-import MainHeader from "../components/header/MainHeader.astro";
-import MainHeaderSM from "../components/header/MainHeaderSM.astro";
+import { ClientRouter } from "astro:transitions";
+
+import MainHeader from "@components/header/MainHeader.astro";
+import MainHeaderSM from "@components/header/MainHeaderSM.astro";
 
 interface Props {
   title: string;
@@ -16,8 +18,8 @@ const { title } = Astro.props;
     <meta name="description" content="Metallica Fan Web Page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
     <MainHeader />

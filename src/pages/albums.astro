@@ -1,6 +1,6 @@
 ---
-import { albums } from "../services/metallica-data";
-import Pages from "../components/sections/Pages.astro";
+import { albums } from "@services/metallica-data";
+import Pages from "@components/sections/Pages.astro";
 ---
 
 <Pages
@@ -63,7 +63,12 @@ import Pages from "../components/sections/Pages.astro";
                   >
                     <h3 class="font-rock text-xl text-white">See Songs</h3>
                   </div>
-                  <img class="w-full" src={cover} alt={title} />
+                  <img
+                    transition:name={`album-${title}`}
+                    class="w-full"
+                    src={cover}
+                    alt={title}
+                  />
                 </div>
               </>
             ) : (
@@ -75,7 +80,12 @@ import Pages from "../components/sections/Pages.astro";
                   >
                     <h3 class="font-rock text-xl text-white">See Songs</h3>
                   </div>
-                  <img class="w-full" src={cover} alt={title} />
+                  <img
+                    transition:name={`album-${title}`}
+                    class="w-full"
+                    src={cover}
+                    alt={title}
+                  />
                 </div>
                 <div class="relative flex flex-col items-center flex-[2] p-8 bg-gray-200 text-gray-700">
                   <div
